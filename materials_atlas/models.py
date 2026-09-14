@@ -280,7 +280,11 @@ class Neighbor(BaseModel):
 
     id: str
     similarity: float
+    similarity_3d: float | None = None
     formula_reduced: str | None = None
+    n_atoms: int | None = None
+    sg_number: int | None = None
+    volume: float | None = None
 
 
 class ProjectionCloud(BaseModel):
@@ -296,6 +300,10 @@ class ProjectionCloud(BaseModel):
     y: list[float]
     z: list[float]
     kind: list[str | None]
+    formula_reduced: list[str | None] | None = None
+    n_atoms: list[int | None] | None = None
+    sg_number: list[int | None] | None = None
+    volume: list[float | None] | None = None
     missing: list[str] = Field(default_factory=list)
 
     def to_numpy(self) -> numpy.ndarray:
